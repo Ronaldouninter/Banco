@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace Banco
         {
             Acciones acciones = new Acciones();
 
+
             bool entrar = loggin();
             if (entrar)
             {
@@ -20,13 +22,26 @@ namespace Banco
                     switch (Menu())
                     {
                         case EnumMenu.Consultar:
+                            Console.WriteLine("tu saldo es: " + acciones.consultarsaldo());
                             break;
                         case EnumMenu.Depositar:
+                            Console.WriteLine("¿Cuánto va a depositar?");
+                            double dep = Convert.ToDouble(Console.ReadLine());
+
+                            acciones.depositar(dep);
+                            Console.WriteLine("Depósito realizado. Tu saldo es:  " + acciones.consultarsaldo());
                             break;
                         case EnumMenu.Retirar:
+                            Console.WriteLine("¿Cuánto va a retirar ?");
+                            double ret = Convert.ToDouble(Console.ReadLine());
+
+                            acciones.retirar(ret);
+                            Console.WriteLine("Retiro realizado. Tu saldo es: " + acciones.consultarsaldo());
                             break;
                         case EnumMenu.Salir:
+                            Environment.Exit(0);
                             break;
+
                         default:
                             break;
                     }
@@ -53,12 +68,13 @@ namespace Banco
 
         static bool loggin()
         {
-            Console.WriteLine("Dame ");
+            Console.WriteLine("Dame pin:  ");
             string pin = Console.ReadLine(); 
             if (pin == "1234")
                 return true;
             else
                 return false;
         }
+       
     }
 }

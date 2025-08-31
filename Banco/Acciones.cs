@@ -10,7 +10,7 @@ namespace Banco
     {
         private double saldo;
 
-        public double Saldo()
+        public double consultarsaldo()
         {
             return saldo;
 
@@ -30,6 +30,7 @@ namespace Banco
             else
                 Console.WriteLine("No tienes saldo suficiente");
         }
+
     }
 }
 
