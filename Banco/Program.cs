@@ -39,6 +39,7 @@ namespace Banco
                             Console.WriteLine("Retiro realizado. Tu saldo es: " + acciones.consultarsaldo());
                             break;
                         case EnumMenu.Salir:
+                            Console.WriteLine("Gracia por usar el Banco Santander");
                             Environment.Exit(0);
                             break;
 
@@ -68,13 +69,14 @@ namespace Banco
 
         static bool loggin()
         {
-            Console.WriteLine("Dame pin:  ");
-            string pin = Console.ReadLine(); 
+            Console.WriteLine("Dame pin  ");
+            string pin = Console.ReadLine();
             if (pin == "1234")
                 return true;
             else
                 return false;
         }
-       
+
+
     }
 }
